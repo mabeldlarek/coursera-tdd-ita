@@ -1,0 +1,11 @@
+
+public class Pilha {
+
+	public Object tamanho;
+
+	public boolean estaVazia() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
