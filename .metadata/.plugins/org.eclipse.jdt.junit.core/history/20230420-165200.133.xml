@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestePIlha" project="Pilha" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="pilha.TestePIlha" time="0.0">
-    <testcase name="pilhaVazia" classname="pilha.TestePIlha" time="0.0"/>
-    <testcase name="adicionaNaPilhaCheia" classname="pilha.TestePIlha" time="0.0"/>
-    <testcase name="removeDaPilhaVazia" classname="pilha.TestePIlha" time="0.0"/>
-    <testcase name="empilhaUmElemento" classname="pilha.TestePIlha" time="0.0"/>
-    <testcase name="empilhaEDesempilha" classname="pilha.TestePIlha" time="0.0"/>
-  </testsuite>
-</testrun>
