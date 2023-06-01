@@ -1,0 +1,32 @@
+
+public class CaixaEletronico {
+	
+	private MockHardware mockHardware;
+	private MockServicoRemoto mockServRemoto;
+	
+	public CaixaEletronico() {
+		
+	}
+
+	public void adicionarMockHardware(MockHardware mockHardware) {
+		this.mockHardware = mockHardware;
+	}
+	
+	public void adicionarMockServRemoto(MockServicoRemoto mockServRemoto) {
+		this.mockServRemoto = mockServRemoto;
+	}
+	
+	public String lerNumCartao() {
+		return mockHardware.pegarNumeroDaContaCartao();
+	}
+	
+	
+	public String logar(int senha) {
+		mockServRemoto.recuperarConta(lerNumCartao(), senha);
+		if(mockServRemoto.getContaRecuperada() !=null) 
+			return "Usuário Autenticado";
+		else
+			return "Usuário inválido";	
+	}
+	
+}

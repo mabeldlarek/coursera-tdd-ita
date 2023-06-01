@@ -1,0 +1,6 @@
+
+public interface ServicoRemoto {
+
+	public void recuperarConta(String numContaRecebido, int senha);
+	public void persistirConta(int valor, int operacao);
+}

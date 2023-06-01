@@ -1,0 +1,26 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class CaixaEletronicoTeste {
+
+	private CaixaEletronico cxEle;
+	private MockHardware mockHardware;
+	private MockServicoRemoto mockServRemoto;
+	private ContaCorrente contaUsuario;
+	
+	@Before
+	void inicializaComponentes() {
+		mockHardware = new MockHardware();
+		mockServRemoto = new MockServicoRemoto();
+		cxEle = new CaixaEletronico();
+		cxEle.adicionarMockHardware(mockHardware);
+	}
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

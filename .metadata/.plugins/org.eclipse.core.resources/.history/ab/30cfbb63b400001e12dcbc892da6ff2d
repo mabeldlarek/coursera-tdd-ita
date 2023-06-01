@@ -1,0 +1,28 @@
+package testes;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import exercicio3.ContaCorrente;
+import exercicio3.MockHardware;
+import exercicio3.MockServicoRemoto;
+import exercicio3.Cartao;
+
+public class TesteMockHardware {
+	
+	private MockHardware mockHardware;
+	
+	@Before
+	public void inicializaComponentes() {
+		mockHardware = new MockHardware();
+	}
+	
+	@Test
+	public void inserirCartao() {
+		Cartao cartao = new Cartao("15023600");
+		mockHardware.adicionarCartao(cartao);
+		assertEquals(cartao.getNumCartao(), mockHardware.pegarNumeroDaContaCartao());
+	}
+}

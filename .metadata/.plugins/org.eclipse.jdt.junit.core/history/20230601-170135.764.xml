@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testes" project="ExercicioSemana3" tests="11" started="11" failures="0" errors="0" ignored="0">
+  <testsuite name="testes.TesteMockHardware" time="0.0">
+    <testcase name="lerCartao" classname="testes.TesteMockHardware" time="0.0"/>
+    <testcase name="entregarDinheiro" classname="testes.TesteMockHardware" time="0.0"/>
+    <testcase name="lerEnvelope" classname="testes.TesteMockHardware" time="0.0"/>
+  </testsuite>
+  <testsuite name="testes.TesteMockServicoRemoto" time="0.001">
+    <testcase name="persistirContaDeposito" classname="testes.TesteMockServicoRemoto" time="0.0"/>
+    <testcase name="persistirContaSaque" classname="testes.TesteMockServicoRemoto" time="0.0"/>
+    <testcase name="recuperarConta" classname="testes.TesteMockServicoRemoto" time="0.0"/>
+    <testcase name="lerSaldo" classname="testes.TesteMockServicoRemoto" time="0.0"/>
+  </testsuite>
+  <testsuite name="testes.TesteCaixaEletronico" time="0.0">
+    <testcase name="depositar" classname="testes.TesteCaixaEletronico" time="0.0"/>
+    <testcase name="logar" classname="testes.TesteCaixaEletronico" time="0.0"/>
+    <testcase name="sacar" classname="testes.TesteCaixaEletronico" time="0.0"/>
+    <testcase name="obterSaldo" classname="testes.TesteCaixaEletronico" time="0.0"/>
+  </testsuite>
+</testrun>

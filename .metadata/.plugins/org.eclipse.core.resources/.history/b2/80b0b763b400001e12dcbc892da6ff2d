@@ -1,0 +1,26 @@
+package exercicio3;
+
+public class MockHardware implements Hardware {
+
+	private Cartao cartao;
+	
+	public void adicionarCartao(Cartao cartaoInserido) {
+		cartao = cartaoInserido;
+	}
+	
+	@Override
+	public String pegarNumeroDaContaCartao() {
+		return cartao.getNumCartao();
+	}
+
+	@Override
+	public void entregarDinheiro() {
+		
+	}
+
+	@Override
+	public void lerEnvelope() {
+		
+	}
+
+}

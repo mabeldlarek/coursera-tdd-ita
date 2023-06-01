@@ -1,0 +1,39 @@
+package exercicio3;
+
+public class MockHardware implements Hardware {
+
+	private Cartao cartao;
+	private boolean isReceptorDinheiroAberto;
+	private boolean isEnvelopeLido;
+	
+	public void adicionarCartao(Cartao cartaoInserido) {
+		cartao = cartaoInserido;
+	}
+	
+	@Override
+	public String pegarNumeroDaContaCartao() {
+		return cartao.getNumCartao();
+	}
+
+	@Override
+	public void entregarDinheiro() {
+		isReceptorDinheiroAberto = true;
+	}
+
+	@Override
+	public void lerEnvelope() {
+		isEnvelopeLido = true;
+	}
+
+	public boolean isReceptorDinheiroAberto() {
+		return isReceptorDinheiroAberto;
+	}
+
+	public boolean isEnvelopeLido() {
+		return isEnvelopeLido;
+	}
+	
+	
+	
+
+}

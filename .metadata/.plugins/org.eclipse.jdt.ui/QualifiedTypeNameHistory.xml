@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+    <fullyQualifiedTypeName name="quebrastringscamelcase.QuebraString"/>
+    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+    <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+    <fullyQualifiedTypeName name="quebrastringscamelcase.StringPossuiCaracterEspecialException"/>
+    <fullyQualifiedTypeName name="quebrastringscamelcase.StringIniciaComNumeroException"/>
+    <fullyQualifiedTypeName name="java.awt.print.Printable"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="javax.swing.event.ListDataEvent"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="org.junit.Before"/>
+    <fullyQualifiedTypeName name="org.junit.Assert"/>
+    <fullyQualifiedTypeName name="ObservadorCarrinho"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="ServicoRemoto"/>
+    <fullyQualifiedTypeName name="MockHardware"/>
+    <fullyQualifiedTypeName name="ContaCorrente"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.TestInstance"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.TestInstance.Lifecycle"/>
+    <fullyQualifiedTypeName name="MockServicoRemoto"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeEach"/>
+</qualifiedTypeNameHistroy>

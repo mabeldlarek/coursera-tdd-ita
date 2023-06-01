@@ -1,0 +1,39 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TesteCaixaEletronico {
+	
+	private static CaixaEletronico cxEle;
+	private static MockHardware mockHardware;
+	private static MockServicoRemoto mockServRemoto;
+	
+	@BeforeAll
+	static void inicializaComponentes() {
+		mockHardware = new MockHardware();
+		mockServRemoto = new MockServicoRemoto();
+		cxEle = new CaixaEletronico();
+		cxEle.adicionarMockHardware(mockHardware);
+		cxEle.adicionarMockServRemoto(mockServRemoto);
+	}
+	
+	@BeforeAll
+	public void inicializaEntradaUsuario() {
+		ContaCorrente contaUsuario = new ContaCorrente("15023600", 1122);
+		mockServRemoto.adicionarConta(contaUsuario);
+		mockHardware.adicionarCartao(new Cartao("15023600"));
+	}
+
+	@Test
+	public void logar() {
+		assertEquals(cxEle.logar(1122), "Usuário Autenticado");
+	}
+	
+	@Test
+	public void depositar() {
+		assertEquals(cxEle.depositar(500), "Depósito recebido com sucesso");
+	}
+
+}

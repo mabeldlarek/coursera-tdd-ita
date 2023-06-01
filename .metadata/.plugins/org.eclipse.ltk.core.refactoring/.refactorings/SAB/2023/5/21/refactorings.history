@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;nome&apos; in &apos;pSABbyCRC_UnitTestingSuite.Biblioteca.registraUsuario(...)&apos; to &apos;nomeUsuario&apos;&#x0D;&#x0A;- Original project: &apos;SAB&apos;&#x0D;&#x0A;- Original element: &apos;pSABbyCRC_UnitTestingSuite.Biblioteca.registraUsuario(String).nome&apos;&#x0D;&#x0A;- Renamed element: &apos;nome&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;nome&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;pSABbyCRC_UnitTestingSuite{Biblioteca.java[Biblioteca~registraUsuario~QString;@nome!629!639!636!639!QString;!0!true" name="nomeUsuario" references="true" stamp="1684690497878" version="1.0"/>
+</session>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TesteCaixaEletronico" project="ExercicioSemana3" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="TesteCaixaEletronico" time="0.0">
+    <testcase name="depositar" classname="TesteCaixaEletronico" time="0.0"/>
+    <testcase name="logar" classname="TesteCaixaEletronico" time="0.0"/>
+    <testcase name="sacar" classname="TesteCaixaEletronico" time="0.0"/>
+  </testsuite>
+</testrun>

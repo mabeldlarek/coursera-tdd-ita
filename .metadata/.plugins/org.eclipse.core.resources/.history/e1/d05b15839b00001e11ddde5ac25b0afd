@@ -1,0 +1,42 @@
+
+public class ContaCorrente {
+	private String numConta;
+	private int senha;
+	private MockServicoRemoto mockServRemoto;
+
+	public ContaCorrente(String numConta, int senha) {
+		super();
+		this.numConta = numConta;
+		this.senha = senha;
+	}
+
+	public void adicionarMockServicoRemoto(MockServicoRemoto mockServRemoto) {
+		this.mockServRemoto = mockServRemoto;
+	}
+
+	public ContaCorrente getConta() {
+		mockServRemoto.recuperarConta(this.numConta, this.senha);
+		return mockServRemoto.getContaRecuperada();
+	}
+
+	public String getNumConta() {
+		return numConta;
+	}
+
+	public void setNumConta(String numConta) {
+		this.numConta = numConta;
+	}
+
+
+	public int getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
+
+	
+	
+}

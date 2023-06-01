@@ -1,0 +1,55 @@
+package testes;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import exercicio3.CaixaEletronico;
+import exercicio3.Cartao;
+import exercicio3.ContaCorrente;
+import exercicio3.MockHardware;
+import exercicio3.MockServicoRemoto;
+
+public class TesteMockServicoRemoto {
+	
+	private MockServicoRemoto mockServRemoto;
+	private ContaCorrente contaUsuario;
+	
+	@Before
+	public void inicializaComponentes() {
+		mockServRemoto = new MockServicoRemoto();
+		contaUsuario = new ContaCorrente("15023600", 1122);
+		mockServRemoto.adicionarConta(contaUsuario);
+	}
+	
+	@Test
+	public void recuperarConta() {
+		mockServRemoto.recuperarConta("15023600", 1122);
+		assertEquals(contaUsuario, mockServRemoto.getContaRecuperada());
+	}
+	
+	@Test
+	public void persistirContaDeposito() {
+		mockServRemoto.recuperarConta("15023600", 1122);
+		mockServRemoto.persistirConta(10, 1);
+		assertEquals(contaUsuario, mockServRemoto.getContaRecuperada());
+	}
+	
+	@Test
+	public void persistirContaSaque() {
+		mockServRemoto.recuperarConta("15023600", 1122);
+		mockServRemoto.persistirConta(10, 1);
+		mockServRemoto.persistirConta(5, 2);
+		assertEquals(contaUsuario, mockServRemoto.getContaRecuperada());
+	}
+	
+	@Test
+	public void lerSaldo() {
+		mockServRemoto.recuperarConta("15023600", 1122);
+		mockServRemoto.persistirConta(10, 1);
+		assertEquals("O saldo é 11", "O saldo é " + mockServRemoto.getContaRecuperada().getSaldo());
+	}
+
+
+}

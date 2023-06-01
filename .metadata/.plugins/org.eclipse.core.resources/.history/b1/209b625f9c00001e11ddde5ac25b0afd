@@ -1,0 +1,27 @@
+
+public class CaixaEletronico {
+	
+	private MockHardware mockHardware;
+	
+	public CaixaEletronico() {
+	
+	}
+
+	public void adicionarMockHardware(MockHardware mockHardware) {
+		this.mockHardware = mockHardware;
+	}
+	
+	public String lerNumCartao() {
+		return mockHardware.pegarNumeroDaContaCartao();
+	}
+	
+	public String logar(int senha) {
+		ContaCorrente conta = new ContaCorrente(mockHardware.pegarNumeroDaContaCartao(), senha);
+		if(conta.getConta()!=null) 
+			return "Usuário Autenticado";
+		else
+			return "Usuário inválido";
+			
+	}
+
+}
