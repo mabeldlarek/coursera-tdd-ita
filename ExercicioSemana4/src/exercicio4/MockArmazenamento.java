@@ -17,6 +17,8 @@ import com.google.gson.JsonObject;
 
 public class MockArmazenamento {
 	
+	List<Placar> placaresRecuperados = new ArrayList<>();
+
 	public void armazenarPlacar(String dadoRecebido) {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("placares.txt", true));
@@ -29,8 +31,8 @@ public class MockArmazenamento {
 	}
 
 	public List<Placar> recuperarPlacar() {
-		Gson gson = new Gson();
 		List<Placar> placaresRecuperados = new ArrayList<>();
+		Gson gson = new Gson();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("placares.txt"));
             String linha;
@@ -43,8 +45,10 @@ public class MockArmazenamento {
         }
 		return placaresRecuperados;
 	}
+
 	
 	public List<Usuario> recuperarUsuario() {
+		
 		Gson gson = new Gson();
 		List<Usuario> usuariosRecuperados = new ArrayList<>();
 		try {
@@ -60,42 +64,48 @@ public class MockArmazenamento {
 		return usuariosRecuperados;
 	}
 	
-	public Map<Integer, Integer> obterPontosPorTipo(int tipoPonto, String nomeUsuario) {
-		List<Placar> recuperados = recuperarPlacar();
-		Map<Integer, Integer> mapaPontoTipoUsuario = new HashMap<>();
-		for(Placar p : recuperados) {
+	public Map<Integer, Integer> obterPontosDoUsuarioPorTipo(int tipoPonto, String nomeUsuario) {
+		placaresRecuperados = recuperarPlacar();
+		Map<Integer, Integer> mapPontosDoUsuario = new HashMap<>();
+		for(Placar p : placaresRecuperados) {
 			if(p.getUsuario().getNome().equals(nomeUsuario) && p.getPontuacao().getTipoPonto() == tipoPonto) {
-				if(mapaPontoTipoUsuario.containsKey(p.getPontuacao().getTipoPonto())) {
-					int novoValor = mapaPontoTipoUsuario.get(p.getPontuacao().getTipoPonto()).intValue() + p.getPontuacao().getQtdPontos();
-					mapaPontoTipoUsuario.put(p.getPontuacao().getTipoPonto(), novoValor);
+				if(mapPontosDoUsuario.containsKey(p.getPontuacao().getTipoPonto())) {
+					int novoValor = mapPontosDoUsuario.get(p.getPontuacao().getTipoPonto()).intValue() + p.getPontuacao().getQtdPontos();
+					mapPontosDoUsuario.put(p.getPontuacao().getTipoPonto(), novoValor);
 				} else
-					mapaPontoTipoUsuario.put(p.getPontuacao().getTipoPonto(), p.getPontuacao().getQtdPontos());
+					mapPontosDoUsuario.put(p.getPontuacao().getTipoPonto(), p.getPontuacao().getQtdPontos());
 			}
 		}
 		
-		return mapaPontoTipoUsuario;			
+		return mapPontosDoUsuario;			
 	}
-	
+
 	public Set<String> getUsuarios() {
-		List<Placar> recuperados = recuperarPlacar();
+		List<Placar> placaresRecuperados = new ArrayList<>();
+		placaresRecuperados = recuperarPlacar();
 		Set<String> usuarios = new HashSet<>();
-		for(Placar p : recuperados) {
+		for(Placar p : placaresRecuperados) {
 			usuarios.add(p.getUsuario().getNome());
 		}
 		return usuarios;
 	}
 
-	public String getTipoPontoUsuario(String nomeUsuario) {
-		List<Placar> recuperados = recuperarPlacar();
-		Set<Integer> tipoPontos = new HashSet<>();
+	public String getTipoPontosPorUsuario(String nomeUsuario) {
+		placaresRecuperados = recuperarPlacar();
+		Set<Integer> setListTipoPontos = new HashSet<>();
 		
-		Gson gson = new Gson();
-		for(Placar p : recuperados) {
+		for(Placar p : placaresRecuperados) {
 			if(p.getUsuario().getNome().equals(nomeUsuario)) {
-				tipoPontos.add(p.getPontuacao().getTipoPonto());
+				setListTipoPontos.add(p.getPontuacao().getTipoPonto());
 			}
 		}
-		
+
+		String json = converterDadoEmJson(setListTipoPontos);
+		return json;
+	}
+	
+	private String converterDadoEmJson(Set<Integer> tipoPontos) {
+		Gson gson = new Gson();
 		JsonArray jsonArray = new JsonArray();
 		for (Integer tipoPonto : tipoPontos) {
 		    JsonObject objetoPontuacao = new JsonObject();
@@ -103,8 +113,6 @@ public class MockArmazenamento {
 		    jsonArray.add(objetoPontuacao);
 		 }
 		
-		String json = gson.toJson(jsonArray);
-		return json;
+		return gson.toJson(jsonArray);
 	}
-	
 }

@@ -60,14 +60,30 @@ public class Placar{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
 
 	public String obterPontosUsuario(String nomeUsuario) {
 		Gson gson = new Gson();
 		List<Map<Integer, Integer>> listaPontuacoes = new ArrayList<>();
 		for(TipoPontuacao t : TipoPontuacao.values()) {
-			listaPontuacoes.add(mockArmazenamento.obterPontosPorTipo(t.getValor(), nomeUsuario));
+			listaPontuacoes.add(mockArmazenamento.obterPontosDoUsuarioPorTipo(t.getValor(), nomeUsuario));
 		}
 		
+		String json = gson.toJson(montarArrayJsonPontosUsuario(listaPontuacoes));
+		return json;
+	}
+	
+
+	public String obterRankingOrdenado(int tipoPonto){
+		Gson gson = new Gson();
+		List<JsonObject> jsonList = montarListaRanking(tipoPonto);
+		ordenarArray(jsonList);
+
+		String json = gson.toJson(jsonList);
+		return json;
+	}
+	
+	private JsonArray montarArrayJsonPontosUsuario(List<Map<Integer, Integer>> listaPontuacoes){
 		JsonArray jsonArray = new JsonArray();
 		for (Map<Integer, Integer> pontuacao : listaPontuacoes) {
 		    Map<String, Integer> jsonPontuacao = new HashMap<>();
@@ -78,35 +94,27 @@ public class Placar{
 		        jsonArray.add(objetoPontuacao);
 		    }
 		}
-
-		String json = gson.toJson(jsonArray);
-		return json;
+		
+		return jsonArray;
 	}
 	
-	/***
-	 * Retornar ranking de um tipo de ponto, com a lista de usuário que possuem aquele ponto ordenados
-	 *  do que possui mais para o que possui menos. Por exemplo: ao pedir o ranking de "estrela",
-	 *   seria retornado "guerra" com "25", "fernandes" com "19" e "rodrigo" com "17". Um usuário
-	 *    que não possui pontos daquele tipo não seria incluído no ranking. Por exemplo, o usuário
-	 *     "toco" sem pontos do tipo "estrela" não seria incluído. 
-	 * @return
-	 */
-	public String obterRankingOrdenado(int tipoPonto){
-		Gson gson = new Gson();
-		JsonArray jsonArray = new JsonArray();
+	private List<JsonObject> montarListaRanking(int tipoPonto) {
 		List<JsonObject> jsonList = new ArrayList<>();
 		for(String usuarioNome : mockArmazenamento.getUsuarios()) {
-			Map<Integer, Integer> mapPontuacao = mockArmazenamento.obterPontosPorTipo(tipoPonto, usuarioNome);
-			 for (Map.Entry<Integer, Integer> entry : mapPontuacao.entrySet()) {
-			    	JsonObject objetoPontuacao = new JsonObject();
-			    	objetoPontuacao.addProperty("tipoPonto", entry.getKey());
-			    	objetoPontuacao.addProperty("qtdPontos", entry.getValue());
-			    	objetoPontuacao.addProperty("usuario", usuarioNome);
-			        jsonArray.add(objetoPontuacao);    
-			        jsonList.add(objetoPontuacao);
-			}
+		Map<Integer, Integer> mapPontuacao = mockArmazenamento.obterPontosDoUsuarioPorTipo(tipoPonto, usuarioNome);
+		 for (Map.Entry<Integer, Integer> entry : mapPontuacao.entrySet()) {
+		    	JsonObject objetoPontuacao = new JsonObject();
+		    	objetoPontuacao.addProperty("tipoPonto", entry.getKey());
+		    	objetoPontuacao.addProperty("qtdPontos", entry.getValue());
+		    	objetoPontuacao.addProperty("usuario", usuarioNome);
+		        jsonList.add(objetoPontuacao);
+		 	}
 		}
 		
+		return jsonList;
+	}
+	
+	private void ordenarArray(List<JsonObject> jsonList) {
 		Collections.sort(jsonList, new Comparator<JsonObject>() {
             @Override
             public int compare(JsonObject obj1, JsonObject obj2) {
@@ -115,10 +123,6 @@ public class Placar{
                 return Integer.compare(qtdPontos, qtdPontos2);
             }
         });
-
-		
-		String json = gson.toJson(jsonList);
-		return json;
 	}
 }
 

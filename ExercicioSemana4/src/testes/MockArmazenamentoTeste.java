@@ -18,7 +18,7 @@ public class MockArmazenamentoTeste {
 	@Test
 	public void retornarTipoDePontoUsuario() {
 		MockArmazenamento mockArmazenamento = new MockArmazenamento();
-		assertEquals("[{\"tipoPonto\":1},{\"tipoPonto\":2}]", mockArmazenamento.getTipoPontoUsuario("Marcos"));
+		assertEquals("[{\"tipoPonto\":1},{\"tipoPonto\":2}]", mockArmazenamento.getTipoPontosPorUsuario("Marcos"));
 	}
 	
 	
