@@ -1,0 +1,15 @@
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":2,"qtdPontos":6},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Maria"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":2,"qtdPontos":6},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Maria"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":2,"qtdPontos":6},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Maria"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":2,"qtdPontos":6},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Maria"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":2,"qtdPontos":6},"usuario":{"nome":"Marcos"}}
+{"pontuacao":{"tipoPonto":1,"qtdPontos":5},"usuario":{"nome":"Maria"}}
