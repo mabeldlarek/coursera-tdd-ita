@@ -58,31 +58,17 @@ public class PlacarTeste {
 		registrarInfoTeste("{\"numTeste\":" + (obterInfoTeste() + 1) + "}");
 		int numTeste = obterInfoTeste();
 		
-		//"[{\"tipoPonto\":1,\"qtdPontos\":" + (numTeste * 5) + "},{\"tipoPonto\":2,\"qtdPontos\":" + (numTeste * 6 )+ "}]"
-		//"[{\"qtdPontos\":" + (numTeste * 5) + "\"tipoPonto\":1},{\"qtdPontos\":" + (numTeste * 6 ) + "\"tipoPonto\":2}"
 		assertEquals("[{\"tipoPonto\":1,\"qtdPontos\":" + (numTeste * 5) + "},{\"tipoPonto\":2,\"qtdPontos\":" + (numTeste * 6 )+ "}]", placar.obterPontosUsuario("Marcos"));
 	}
 	
-	/*@Test
-	public void retornarPontosUsuario() {
+	@Test
+	public void retornarRankingOrdenado() {
 		Placar placar = new Placar();
 		MockArmazenamento mockArmazenamento = new MockArmazenamento();
-		
-		Usuario usuario = new Usuario("Marcos");
-		Pontuacao pontuacao = new Pontuacao(1,5);
-		
-		placar.registrarPlacar(pontuacao, usuario);
-		mockArmazenamento.armazenarPlacar(placar.getDadoRegistrado());
-		
-		Pontuacao pontuacao2 = new Pontuacao(2,6);
-		placar.registrarPlacar(pontuacao2, usuario);
-		mockArmazenamento.armazenarPlacar(placar.getDadoRegistrado());
-		
-		registrarInfoTeste("{\"numTeste\":" + (obterInfoTeste() + 1) + "}");
+		placar.adicionarMockArmazenamento(mockArmazenamento);
 		int numTeste = obterInfoTeste();
-		
-		assertEquals("[{\"tipoPonto\":1,\"qtdPontos\":" + (numTeste * 5) + "},{\"tipoPonto\":2,\"qtdPontos\":" + (numTeste * 6 )+ "}]", mockArmazenamento.obterPontosUsuario("Marcos"));
-	}*/
+		assertEquals("[{\"tipoPonto\":1,\"qtdPontos\":" + (numTeste * 5) + ",\"usuario\":\"Marcos\"},{\"tipoPonto\":1,\"qtdPontos\":" + (numTeste * 5 ) + ",\"usuario\":\"Maria\"}]", placar.obterRankingOrdenado(1));
+	}
 	
 	private void registrarInfoTeste(String infoTeste) {
 		try {

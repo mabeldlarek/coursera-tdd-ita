@@ -1,12 +1,13 @@
 package exercicio4;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -82,6 +83,43 @@ public class Placar{
 		return json;
 	}
 	
+	/***
+	 * Retornar ranking de um tipo de ponto, com a lista de usuário que possuem aquele ponto ordenados
+	 *  do que possui mais para o que possui menos. Por exemplo: ao pedir o ranking de "estrela",
+	 *   seria retornado "guerra" com "25", "fernandes" com "19" e "rodrigo" com "17". Um usuário
+	 *    que não possui pontos daquele tipo não seria incluído no ranking. Por exemplo, o usuário
+	 *     "toco" sem pontos do tipo "estrela" não seria incluído. 
+	 * @return
+	 */
+	public String obterRankingOrdenado(int tipoPonto){
+		Gson gson = new Gson();
+		JsonArray jsonArray = new JsonArray();
+		List<JsonObject> jsonList = new ArrayList<>();
+		for(String usuarioNome : mockArmazenamento.getUsuarios()) {
+			Map<Integer, Integer> mapPontuacao = mockArmazenamento.obterPontosPorTipo(tipoPonto, usuarioNome);
+			 for (Map.Entry<Integer, Integer> entry : mapPontuacao.entrySet()) {
+			    	JsonObject objetoPontuacao = new JsonObject();
+			    	objetoPontuacao.addProperty("tipoPonto", entry.getKey());
+			    	objetoPontuacao.addProperty("qtdPontos", entry.getValue());
+			    	objetoPontuacao.addProperty("usuario", usuarioNome);
+			        jsonArray.add(objetoPontuacao);    
+			        jsonList.add(objetoPontuacao);
+			}
+		}
+		
+		Collections.sort(jsonList, new Comparator<JsonObject>() {
+            @Override
+            public int compare(JsonObject obj1, JsonObject obj2) {
+                int qtdPontos = obj1.getAsJsonObject().get("qtdPontos").getAsInt();
+                int qtdPontos2 = obj2.getAsJsonObject().get("qtdPontos").getAsInt();
+                return Integer.compare(qtdPontos, qtdPontos2);
+            }
+        });
+
+		
+		String json = gson.toJson(jsonList);
+		return json;
+	}
 }
 
 
